@@ -1,11 +1,11 @@
-import 'package:breath_app/routing/app_router.dart';
+import 'package:breath_app/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The main application widget.
-class EmotionApp extends ConsumerWidget {
-  /// Creates a new instance of [EmotionApp].
-  const EmotionApp({super.key});
+class BreathApp extends ConsumerWidget {
+  /// Creates a new instance of [BreathApp].
+  const BreathApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
