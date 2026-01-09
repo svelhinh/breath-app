@@ -1,6 +1,7 @@
 import 'package:breath_app/core/widgets/not_found_screen.dart';
 import 'package:breath_app/features/exercise/presentation/exercise_screen.dart';
 import 'package:breath_app/features/home/presentation/home_screen.dart';
+import 'package:breath_app/features/welcome/data/onboarding_prefs.dart';
 import 'package:breath_app/features/welcome/presentation/welcome_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -43,13 +44,13 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (c, s) => const ExerciseScreen(),
       ),
     ],
-    // redirect: (context, state) async {
-    //   final complete = await ref.read(onboardingCompleteProvider.future);
-    //   final isOnWelcome = state.matchedLocation == '/${AppRoute.welcome.name}';
+    redirect: (context, state) async {
+      final complete = await ref.read(onboardingCompleteProvider.future);
+      final isOnWelcome = state.matchedLocation == '/${AppRoute.welcome.name}';
 
-    //   if (!complete) return isOnWelcome ? null : '/${AppRoute.welcome.name}';
-    //   return isOnWelcome ? '/${AppRoute.home.name}' : null;
-    // },
+      if (!complete) return isOnWelcome ? null : '/${AppRoute.welcome.name}';
+      return isOnWelcome ? '/${AppRoute.home.name}' : null;
+    },
     errorBuilder: (context, state) => const NotFoundScreen(),
   );
 
